@@ -35,7 +35,7 @@ exports.login = async (req, res, next) => {
             return next(new ErrorResponse('Password is incorrect!', 401))
         }
 
-        send(user, 200, res)
+        sendToken(user, 200, res)
     } catch (error) {
         return next(new ErrorResponse(error.message, 500))
     }
