@@ -9,10 +9,7 @@ exports.register = async (req, res, next) => {
             first_name, last_name, email, password
         })
 
-        res.status(201).json({
-            success: true,
-            user
-        })
+        sendToken(user, 201, res)
     } catch (error) {
         next(error)
     }
@@ -38,10 +35,7 @@ exports.login = async (req, res, next) => {
             return next(new ErrorResponse('Password is incorrect!', 401))
         }
 
-        res.status(200).json({
-            success: true,
-            token: "tr1452asdf"
-        })
+        send(user, 200, res)
     } catch (error) {
         return next(new ErrorResponse(error.message, 500))
     }
@@ -53,4 +47,12 @@ exports.forgotpassword = (req, res, next) => {
 
 exports.resetpassword = (req, res, next) => {
     res.send("Reset Password Route")
+}
+
+const sendToken = (user, statusCode, res) => {
+    const token = user.getSignedToken()
+    res.status(statusCode).json({
+        success: true,
+        token: token
+    })
 }
