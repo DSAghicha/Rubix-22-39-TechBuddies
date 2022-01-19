@@ -1,0 +1,9 @@
+{
+    "short_name": "ParaMate",
+    "name": "ParaMate - Your Paramedic Buddy",
+    "start_url": ".",
+    "scope": "/",
+    "display": "standalone",
+    "theme_color": "#4D243D",
+    "background_color": "#ffffff"
+}
